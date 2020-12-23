@@ -1,0 +1,24 @@
+Duyệt đề tài (topic_status): 0 - chờ duyệt(mặc định khi sinh viên đăng ký đề tài xong), 1 - giáo viên đã duyệt, 2 - giáo viên đã hủy duyệt
+Duyệt gia hạn đề tài (extend_topic_status): NULL - chưa gia hạn(mặc định), 0 - đã gia hạn và chờ giáo viên duyệt, 1 - giáo viên đã duyệt, 2 - giáo viên đã hủy duyệt
+Duyệt hủy đề tài (cancel_topic_status): NULL - chưa hủy(mặc định), 0 - đã hủy và chờ giáo viên duyệt, 1 - giáo viên đã duyệt, 2 - giáo viên đã hủy duyệt
+
+
+- Chưa đăng ký: $check_create_topic == false -> show form
+- Nếu đã đăng ký (đã được duyệt): topic_status = 0 (1) -> ẩn form đăng ký
+- Nếu đã đăng ký nhưng không được duyệt: topic_status = 2 -> show form đăng ký
+- Nếu đã đăng ký, xin hủy và được giáo viên duyệt hủy: cancel_topic_status = 1 -> show form đăng ký
+
+===================================================================================
+
+I/ Sinh viên
+1. Phần đăng ký đề tài có mục gia hạn, thì ngày gia hạn phải > hơn ngày hiện tại
+2. Phần gia hạn đề tài, nếu gia hạn thì chọn ngày phải lớn hơn ngày gia hạn lúc đầu. Gia hạn <=> Đề tài đã được duyệt, 
+chưa được duyệt thì ẩn button gia hạn và hiện dòng chứ thay thế ở đó là "Đề tài chưa được duyệt", 
+bị hủy ẩn button gia hạn và hiện dòng chứ thay thế ở đó là "Đề tài đã bị hủy"
+3. Nếu sinh viên gia hạn TRƯỚC hủy SAU thì thôi, nhưng nếu hủy TRƯỚC gia hạn SAU, 
+trong trường hợp hủy đã được duyệt thì ẩn button gia hạn và hiện dòng chứ thay thế ở đó là "Đề tài đã bị hủy"
+II/ Giáo viên
+1.Gặp thằng sinh viên nào dở dở ương ương, nó làm cả 3 chức năng cùng 1 lúc thì sẽ xử lý:
+- Nếu giáo viên duyệt đề tài TRƯỚC duyệt hủy SAU thì thôi, nhưng nếu duyệt đề hủy TRƯỚC duyệt đề tài SAU, bên phần duyệt đề tài ẩn 2 button Xác nhận và Không xác nhận và hiện dòng chứ thay thế ở đó là "Đề tài đã bị hủy"
+- Bên duyệt gia hạn tương tự
+2. Sinh viên có gia hạn, có hủy thì bên giáo viên mới show list ở phần duyệt tương ứng

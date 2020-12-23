@@ -1,0 +1,28 @@
+body{
+    margin-top: 100px;
+}
+label.error, .error-msg{
+    font-weight: 600!important;
+    margin-bottom: 3px;
+}
+.error-msg{
+    color: #e62c2d;
+}
+label.error{
+    border: none!important;
+    color: #e62c2d;
+}
+.error{
+    border: 1px solid #e62c2d!important;
+}
+.navbar.navbar-inverse {
+    background-image: url("../img/hoc-vien-mat-ma.jpg");
+    background-color: white!important;
+    border: none!important;
+    background-repeat: round;
+    background-size: cover;
+    min-height: 100px;
+}
+.side-nav {
+    top: 100px;
+}
